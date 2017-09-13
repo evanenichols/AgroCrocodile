@@ -20,4 +20,7 @@ public class PlayerMove : MonoBehaviour {
 		float mx = Input.GetAxis ("Mouse X");
 		transform.Rotate(0,mx*mouseXSensitivity,0);
 	}
+
+	//This is a testing change
+
 }
