@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114876552417982460}
   - component: {fileID: 114555942058055980}
   - component: {fileID: 114329595706716856}
+  - component: {fileID: 114767911505113070}
   m_Layer: 0
   m_Name: MovingEntity
   m_TagString: Player
@@ -139,6 +140,20 @@ MonoBehaviour:
     minCameraPitch: -90
     myCamera: {fileID: 0}
     cameraUp: {x: 0, y: 1, z: 0}
+--- !u!114 &114767911505113070
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1430182430314690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a015c594715f4edabb2d25c4b79ba1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thingToCreate: {fileID: 0}
+  initialSpeed: 0
+  angleFromHorizontal: 0
 --- !u!114 &114876552417982460
 MonoBehaviour:
   m_ObjectHideFlags: 1
