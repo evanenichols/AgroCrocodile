@@ -147,6 +147,22 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114767911505113070, guid: 117dcc64d58074d56bb6b0b2189da6bb,
+        type: 2}
+      propertyPath: thingToCreate
+      value: 
+      objectReference: {fileID: 1105012885980202, guid: 65dfcd0fa03f24b3f81cf483a7bf05b4,
+        type: 2}
+    - target: {fileID: 114767911505113070, guid: 117dcc64d58074d56bb6b0b2189da6bb,
+        type: 2}
+      propertyPath: initialSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114767911505113070, guid: 117dcc64d58074d56bb6b0b2189da6bb,
+        type: 2}
+      propertyPath: angleFromHorizontal
+      value: 45
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 117dcc64d58074d56bb6b0b2189da6bb, type: 2}
   m_IsPrefabParent: 0
