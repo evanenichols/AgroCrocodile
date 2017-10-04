@@ -12,7 +12,7 @@ public class ThrowBasketballScript : MonoBehaviour {
 
 	List<GameObject> items = new List<GameObject>();
 
-	void Start()
+	/*void Start()
 	{
 		Vector3 start = new Vector3 (0, 0, 0), end = new Vector3 (0, 1, 0);
 		GameObject upLine = null;
@@ -20,7 +20,12 @@ public class ThrowBasketballScript : MonoBehaviour {
 		GameObject arcLine = null;
 		Vector3 dir = (end - start).normalized;
 		//Lines.MakeArcArrow(ref arcLine, 270, 32, 2, dir, start+new Vector3 (0,0,0.5f), 
-		//	new Vector3(0,0,0, Color.red);
+			new Vector3(0,0,0, Color.red);
+	}*/
+
+	public void EnableShooting(bool enabled) {
+		canShoot = enabled;
+		DestroyALl ();
 	}
 
 	void OnTriggerEnter(Collider col) {
@@ -33,6 +38,7 @@ public class ThrowBasketballScript : MonoBehaviour {
 	public void Update () 
 	{
 		if (Input.GetButtonDown ("Fire2")) {
+			canShoot = true;
 			DestroyALl();
 		}
 
@@ -54,7 +60,7 @@ public class ThrowBasketballScript : MonoBehaviour {
 
 	public void ThrowItem() {
 		if (canShoot) {
-		Vector3 p = gameObject.transform.position+gameObject.transform.forward;
+		Vector3 p = gameObject.transform.position+gameObject.transform.forward*1.5f;
 		Debug.Log (gameObject+" wants to shoot a "+thingToCreate);
 		GameObject item = Instantiate (thingToCreate, p, gameObject.transform.rotation);
 		Quaternion q = item.transform.rotation;
@@ -81,6 +87,5 @@ public class ThrowBasketballScript : MonoBehaviour {
 			Destroy (items [i]);
 		}
 		items.Clear ();
-		canShoot = true;
 	}
 }
