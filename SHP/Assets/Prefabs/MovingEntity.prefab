@@ -168,7 +168,7 @@ MonoBehaviour:
   MoveDirection: {x: 0, y: 0, z: 0}
   LookDirection: {x: 0, y: 0, z: 0}
   MoveSpeed: 5
-  TurnSpeed: 720
+  TurnSpeed: 180
   Acceleration: -1
   IsBrakeOn: 0
   AutomaticallyTurnToFaceLookDirection: 1
