@@ -5,9 +5,10 @@ using UnityEngine;
 public class ThrowBasketballScript : MonoBehaviour {
 
 	public GameObject thingToCreate;
+	public GameObject mainCamera;
 	private float initialSpeed = 0;
 	private bool isThrowing = false;
-	public float angleFromHorizontal;
+	//public float angleFromHorizontal;
 	private bool canShoot = true;
 
 	List<GameObject> items = new List<GameObject>();
@@ -40,7 +41,7 @@ public class ThrowBasketballScript : MonoBehaviour {
 	private void handlePredictionLine ()
 	{
 		List<Vector3> ballLocations = new List<Vector3> ();
-		Vector3 v = (transform.forward + transform.up).normalized * initialSpeed;
+		Vector3 v = (mainCamera.transform.forward).normalized * initialSpeed;
 		Vector3 p = gameObject.transform.position+gameObject.transform.forward*1.5f;;
 		ballLocations.Add (p);
 		for (int i = 0; i < 50; ++i) {
@@ -89,9 +90,11 @@ public class ThrowBasketballScript : MonoBehaviour {
 
 	GameObject powerLine;
 
+	/*
 	public void ThrowItem() {
 		if (canShoot) {
 		Vector3 p = gameObject.transform.position+gameObject.transform.forward*1.5f;
+		
 		Debug.Log (gameObject+" wants to shoot a "+thingToCreate);
 		GameObject item = Instantiate (thingToCreate, p, gameObject.transform.rotation);
 		Quaternion q = item.transform.rotation;
@@ -110,6 +113,18 @@ public class ThrowBasketballScript : MonoBehaviour {
 		Rigidbody rb = item.GetComponent<Rigidbody> ();
 		rb.velocity = item.transform.forward * initialSpeed;
 		items.Add (item);
+		}
+	}*/
+
+	public void ThrowItem() {
+		if (canShoot) {
+			Vector3 p = gameObject.transform.position+gameObject.transform.forward*1.5f;
+
+			Debug.Log (gameObject+" wants to shoot a "+thingToCreate);
+			GameObject item = Instantiate (thingToCreate, p, mainCamera.transform.rotation);
+			Rigidbody rb = item.GetComponent<Rigidbody> ();
+			rb.velocity = item.transform.forward * initialSpeed;
+			items.Add (item);
 		}
 	}
 
