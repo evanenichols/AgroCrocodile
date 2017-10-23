@@ -11,3 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/boxhouseScene.unity
     guid: d2b4d7fd9c64544d39515c0518f92311
+  - enabled: 1
+    path: Assets/basketballScene.unity
+    guid: 5423366a3d9974fba91e30f86a4bb09c
