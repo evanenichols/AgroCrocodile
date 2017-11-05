@@ -120,7 +120,7 @@ public class BaseInputController {
 			cameraOffset = camHandle.position - p.transform.position;
 			cameraDistance = cameraOffset.magnitude;
 		}
-		if(UnityEngine.VR.VRDevice.isPresent) {
+		if(UnityEngine.XR.XRDevice.isPresent) {
 			camHandle = (new GameObject("<camera handle>")).transform;
 			myCamera.transform.position = Vector3.zero;
 			myCamera.transform.SetParent(camHandle);
