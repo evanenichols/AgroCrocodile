@@ -5,7 +5,6 @@ using UnityEngine;
 public class ThrowBasketballScript : MonoBehaviour {
 
 	public GameObject thingToCreate;
-	public MovingEntity_CameraInput objectWithMainCamera;
 	private float initialSpeed = 0;
 	private bool isThrowing = false;
 	//public float angleFromHorizontal;
@@ -15,7 +14,7 @@ public class ThrowBasketballScript : MonoBehaviour {
 
 	void Start()
 	{
-		mainCamera = objectWithMainCamera.inputController.myCamera;
+		mainCamera = Camera.main;
 	}
 
 	/*void Start()
@@ -46,7 +45,7 @@ public class ThrowBasketballScript : MonoBehaviour {
 	{
 		List<Vector3> ballLocations = new List<Vector3> ();
 		if (mainCamera == null) {
-			mainCamera = objectWithMainCamera.inputController.myCamera;
+			mainCamera = Camera.main;
 		}
 		Vector3 v = (mainCamera.transform.forward).normalized * initialSpeed;
 		Vector3 p = gameObject.transform.position+gameObject.transform.forward*1.5f;;
