@@ -135,7 +135,7 @@ public class BaseInputController {
 	}
 	public virtual void Release(MovingEntityBase me) { }
 	public bool ChangeCameraDistanceBasedOnScrollWheel() {
-		float scroll = Input.GetAxis(controls.zoomInAndOut);
+		float scroll = (controls.zoomInAndOut == "")?0 :Input.GetAxis(controls.zoomInAndOut);
 		if(scroll != 0) {
 			cameraDistance -= scroll * 10;
 			cameraDistance = Mathf.Max(0, cameraDistance);
@@ -197,7 +197,10 @@ public class BaseInputController {
 public class GroundedInputController : BaseInputController {
 	MovingEntity pc;
 	public GroundedInputController() { }
-	public GroundedInputController(BaseInputController cameraControl) { base.Copy(cameraControl); }
+	public GroundedInputController(BaseInputController cameraControl) {
+		base.Copy(cameraControl);
+		this.controls.zoomInAndOut = cameraControl.controls.zoomInAndOut;
+	}
 	public override void LateUpdate(MovingEntityBase me) {
 		if (!pc.AutomaticallyFollowPositionOnPlatform && pc.gravityApplication != MovingEntity.GravityState.none) {
 			pc.FollowPositionOnPlatform ();

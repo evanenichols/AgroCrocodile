@@ -3722,7 +3722,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thingToCreate: {fileID: 1105012885980202, guid: 65dfcd0fa03f24b3f81cf483a7bf05b4,
     type: 2}
-  mainCamera: {fileID: 0}
+  objectWithMainCamera: {fileID: 246508149}
+--- !u!114 &246508149 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114555942058055980, guid: 117dcc64d58074d56bb6b0b2189da6bb,
+    type: 2}
+  m_PrefabInternal: {fileID: 477667398}
+  m_Script: {fileID: 11500000, guid: a2c044803c30047f89a69b687c3643fa, type: 3}
 --- !u!4 &246508154 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4898448580160394, guid: 117dcc64d58074d56bb6b0b2189da6bb,
@@ -3878,6 +3884,16 @@ Prefab:
     - target: {fileID: 4898448580160394, guid: 117dcc64d58074d56bb6b0b2189da6bb, type: 2}
       propertyPath: m_LocalScale.z
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114555942058055980, guid: 117dcc64d58074d56bb6b0b2189da6bb,
+        type: 2}
+      propertyPath: inputController.controls.zoomInAndOut
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114555942058055980, guid: 117dcc64d58074d56bb6b0b2189da6bb,
+        type: 2}
+      propertyPath: inputController.cameraDistance
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114767911505113070, guid: 117dcc64d58074d56bb6b0b2189da6bb, type: 2}
@@ -8475,7 +8491,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1675497480}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 383.5, y: 281.5, z: 0}
+  m_LocalPosition: {x: 383.5, y: 271, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1359127495}

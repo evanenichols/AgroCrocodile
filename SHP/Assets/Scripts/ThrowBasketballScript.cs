@@ -5,13 +5,18 @@ using UnityEngine;
 public class ThrowBasketballScript : MonoBehaviour {
 
 	public GameObject thingToCreate;
-	public GameObject mainCamera;
+	public MovingEntity_CameraInput objectWithMainCamera;
 	private float initialSpeed = 0;
 	private bool isThrowing = false;
 	//public float angleFromHorizontal;
-	private bool canShoot = true;
+	private Camera mainCamera;
 
 	List<GameObject> items = new List<GameObject>();
+
+	void Start()
+	{
+		mainCamera = objectWithMainCamera.inputController.myCamera;
+	}
 
 	/*void Start()
 	{
@@ -25,7 +30,6 @@ public class ThrowBasketballScript : MonoBehaviour {
 	}*/
 
 	public void EnableShooting(bool enabled) {
-		canShoot = enabled;
 		DestroyALl ();
 	}
 
@@ -41,6 +45,9 @@ public class ThrowBasketballScript : MonoBehaviour {
 	private void handlePredictionLine ()
 	{
 		List<Vector3> ballLocations = new List<Vector3> ();
+		if (mainCamera == null) {
+			mainCamera = objectWithMainCamera.inputController.myCamera;
+		}
 		Vector3 v = (mainCamera.transform.forward).normalized * initialSpeed;
 		Vector3 p = gameObject.transform.position+gameObject.transform.forward*1.5f;;
 		ballLocations.Add (p);
@@ -56,20 +63,25 @@ public class ThrowBasketballScript : MonoBehaviour {
 
 	public void Update () 
 	{
-		
-		if (Input.GetButtonDown ("Fire2")) {
-			canShoot = true;
-			DestroyALl();
-		}
 
-		if(Input.GetButtonDown ("Fire1") && canShoot) {
+		if(Input.GetButtonDown ("Fire1")) {
 			//predictionLine.SetActive (true);
+			DestroyALl();
 			isThrowing = true;
-		}
+		} 
 
-		if (Input.GetButtonUp ("Fire1") && canShoot) {
-			ThrowItem();
-			canShoot = false;
+		if(Input.GetButtonDown ("Fire2")) {
+			//predictionLine.SetActive (true);
+			DestroyALl();
+		} 
+
+		/* if (items.Count > 0 && Input.GetButton ("Fire1")) {
+			canShoot = true;
+			DestroyALl ();
+		} */
+
+		if (Input.GetButtonUp ("Fire1")) {
+			ThrowItem ();
 			initialSpeed = 0;
 			isThrowing = false;
 			//powerLine.SetActive (false);
@@ -117,15 +129,13 @@ public class ThrowBasketballScript : MonoBehaviour {
 	}*/
 
 	public void ThrowItem() {
-		if (canShoot) {
-			Vector3 p = gameObject.transform.position+gameObject.transform.forward*1.5f;
+		Vector3 p = gameObject.transform.position+gameObject.transform.forward*1.5f;
 
 			Debug.Log (gameObject+" wants to shoot a "+thingToCreate);
 			GameObject item = Instantiate (thingToCreate, p, mainCamera.transform.rotation);
 			Rigidbody rb = item.GetComponent<Rigidbody> ();
 			rb.velocity = item.transform.forward * initialSpeed;
 			items.Add (item);
-		}
 	}
 
 	public void DestroyALl() {
