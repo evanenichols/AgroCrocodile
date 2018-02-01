@@ -16,7 +16,7 @@ public class cameraMouseRotation : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (mouseIsDisabled) {
+		if (!mouseIsDisabled) {
 			float x = Input.GetAxis ("Mouse X") * mouseSensitivity;
 			float y = Input.GetAxis ("Mouse Y") * mouseSensitivity;
 			float w = Input.GetAxis ("Mouse ScrollWheel");

@@ -4,11 +4,25 @@ using UnityEngine;
 
 public class playerControl : MonoBehaviour {
 	Rigidbody rb;
-	Camera myCamera;
+	public Camera myCamera;
 	public float bodySpeed = 10;
 	void Start () {
 		rb = GetComponent<Rigidbody> ();
-		myCamera = Camera.main;
+		if (myCamera == null) {
+			myCamera = Camera.main;
+		}
+		if (myCamera == null) {
+			GameObject camobj = new GameObject ("<Camera>");
+			myCamera = camobj.AddComponent<Camera> ();
+			camobj.AddComponent<FlareLayer> ();
+			camobj.AddComponent<AudioListener> ();
+			camobj.AddComponent<cameraMouseRotation> ();
+			camobj.transform.SetParent (transform);
+			camobj.transform.localPosition = new Vector3 (0, 0, -10);
+			CmdLine.Instance.transform.SetParent (camobj.transform);
+			CmdLine.Instance.transform.localPosition = new Vector3 (0, 0, 2.5f);
+		}
+		
 	}
 
 	GameObject line_forward;
