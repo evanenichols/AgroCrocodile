@@ -8,15 +8,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/characterControllerTest.unity
     guid: 6f2e24fa34cf446fd8b8746c09f905c3
-  - enabled: 0
+  - enabled: 1
     path: Assets/SHP MAIN.unity
     guid: 3f856e14f693c480cb54c89e75236f42
-  - enabled: 0
+  - enabled: 1
     path: Assets/SHP.unity
     guid: dd49f9f0bf77343c1b5324e02d761cea
-  - enabled: 0
+  - enabled: 1
     path: Assets/basketballScene.unity
     guid: 5423366a3d9974fba91e30f86a4bb09c
-  - enabled: 0
+  - enabled: 1
     path: Assets/boxhouseScene.unity
     guid: d2b4d7fd9c64544d39515c0518f92311

@@ -9,6 +9,7 @@ public class ThrowBasketballScript : MonoBehaviour {
 	private bool isThrowing = false;
 	//public float angleFromHorizontal;
 	private Camera mainCamera;
+	private int numUpdatesSinceThrow;
 
 	List<GameObject> items = new List<GameObject>();
 
@@ -34,8 +35,11 @@ public class ThrowBasketballScript : MonoBehaviour {
 
 	void OnTriggerEnter(Collider col) {
 		Debug.Log (col.tag + "collided with player");
-		if (col.tag == "SpawnySphere(Clone)") { 
-			DestroyALl ();
+		if (col.tag == "SpawnySphere(Clone)" ) { 
+			if (numUpdatesSinceThrow == 100) {
+				DestroyALl ();
+				Debug.Log ("Destroyed");
+			}
 		}
 	} 
 
@@ -48,7 +52,7 @@ public class ThrowBasketballScript : MonoBehaviour {
 			mainCamera = Camera.main;
 		}
 		Vector3 v = (mainCamera.transform.forward).normalized * initialSpeed;
-		Vector3 p = gameObject.transform.position+gameObject.transform.forward*1.5f;;
+		Vector3 p = gameObject.transform.position;;//+gameObject.transform.forward*1.5f;;
 		ballLocations.Add (p);
 		for (int i = 0; i < 50; ++i) {
 			float t = 1.0f / 8;
@@ -97,44 +101,25 @@ public class ThrowBasketballScript : MonoBehaviour {
 
 			handlePredictionLine ();
 		}
+
+		if (numUpdatesSinceThrow < 100) {
+			numUpdatesSinceThrow++;
+		}
+
+		Debug.Log (numUpdatesSinceThrow);
  	}
 
 	GameObject powerLine;
 
-	/*
 	public void ThrowItem() {
-		if (canShoot) {
-		Vector3 p = gameObject.transform.position+gameObject.transform.forward*1.5f;
-		
-		Debug.Log (gameObject+" wants to shoot a "+thingToCreate);
-		GameObject item = Instantiate (thingToCreate, p, gameObject.transform.rotation);
-		Quaternion q = item.transform.rotation;
-		Quaternion r = Quaternion.Euler (-angleFromHorizontal, 0, 0);
-		GameObject qAxis = null, qArc = null;
-		float angle;
-		Vector3 axis;
-		Debug.Log (q);
-		r.ToAngleAxis (out angle, out axis);
-		//Lines.MakeArrow (ref qAxis, transform.position, transform.position + q*axis);
-		//Lines.MakeArcArrow (ref qArc, angle, 32, 4, q*axis, 
-		//	transform.forward, transform.position);
-
-
-		item.transform.rotation = q * r;
-		Rigidbody rb = item.GetComponent<Rigidbody> ();
-		rb.velocity = item.transform.forward * initialSpeed;
-		items.Add (item);
-		}
-	}*/
-
-	public void ThrowItem() {
-		Vector3 p = gameObject.transform.position+gameObject.transform.forward*1.5f;
+		Vector3 p = gameObject.transform.position;//+gameObject.transform.forward*1.5f;
 
 			Debug.Log (gameObject+" wants to shoot a "+thingToCreate);
 			GameObject item = Instantiate (thingToCreate, p, mainCamera.transform.rotation);
 			Rigidbody rb = item.GetComponent<Rigidbody> ();
 			rb.velocity = item.transform.forward * initialSpeed;
 			items.Add (item);
+		numUpdatesSinceThrow = 0;
 	}
 
 	public void DestroyALl() {
