@@ -18,30 +18,13 @@ public class ThrowBasketballScript : MonoBehaviour {
 		mainCamera = Camera.main;
 	}
 
-	/*void Start()
-	{
-		Vector3 start = new Vector3 (0, 0, 0), end = new Vector3 (0, 1, 0);
-		GameObject upLine = null;
-		//Lines.MakeArrow (ref upLine, start, end, 2, Color.red);
-		GameObject arcLine = null;
-		Vector3 dir = (end - start).normalized;
-		//Lines.MakeArcArrow(ref arcLine, 270, 32, 2, dir, start+new Vector3 (0,0,0.5f), 
-			new Vector3(0,0,0, Color.red);
-	}*/
+	public bool canPickUpBall() {
+		return numUpdatesSinceThrow == 10;
+	}
 
 	public void EnableShooting(bool enabled) {
 		DestroyALl ();
 	}
-
-	void OnTriggerEnter(Collider col) {
-		Debug.Log (col.tag + "collided with player");
-		if (col.tag == "SpawnySphere(Clone)" ) { 
-			if (numUpdatesSinceThrow == 100) {
-				DestroyALl ();
-				Debug.Log ("Destroyed");
-			}
-		}
-	} 
 
 	GameObject predictionLine;
 
@@ -52,7 +35,7 @@ public class ThrowBasketballScript : MonoBehaviour {
 			mainCamera = Camera.main;
 		}
 		Vector3 v = (mainCamera.transform.forward).normalized * initialSpeed;
-		Vector3 p = gameObject.transform.position;;//+gameObject.transform.forward*1.5f;;
+		Vector3 p = gameObject.transform.position+gameObject.transform.forward*1.5f;
 		ballLocations.Add (p);
 		for (int i = 0; i < 50; ++i) {
 			float t = 1.0f / 8;
@@ -102,7 +85,7 @@ public class ThrowBasketballScript : MonoBehaviour {
 			handlePredictionLine ();
 		}
 
-		if (numUpdatesSinceThrow < 100) {
+		if (numUpdatesSinceThrow < 10) {
 			numUpdatesSinceThrow++;
 		}
 
@@ -112,7 +95,7 @@ public class ThrowBasketballScript : MonoBehaviour {
 	GameObject powerLine;
 
 	public void ThrowItem() {
-		Vector3 p = gameObject.transform.position;//+gameObject.transform.forward*1.5f;
+		Vector3 p = gameObject.transform.position +gameObject.transform.forward*1.5f;
 
 			Debug.Log (gameObject+" wants to shoot a "+thingToCreate);
 			GameObject item = Instantiate (thingToCreate, p, mainCamera.transform.rotation);
