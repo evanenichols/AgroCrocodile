@@ -43,7 +43,7 @@ public class ThrowBasketballScript : MonoBehaviour {
 			v += Vector3.down * 9.81f * t;
 			ballLocations.Add (p);
 		}
-		Lines.Make (ref predictionLine, ballLocations.ToArray (), ballLocations.Count, Color.green);
+		NS.Lines.Make (ref predictionLine, ballLocations.ToArray (), ballLocations.Count, Color.green);
 
 	}
 

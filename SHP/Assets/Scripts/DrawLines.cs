@@ -19,10 +19,10 @@ public class DrawLines : MonoBehaviour {
 				return;
 			}
 		}
-		Lines.MakeArrow (ref cameraLine, myCamera.transform.position, 
-						myCamera.transform.position + myCamera.transform.forward*2f, 2, Color.red);
-		Lines.MakeArrow (ref bodyLine, transform.position, 
-			transform.position + transform.forward*2f, 2, Color.blue);
+		NS.Lines.MakeArrow (ref cameraLine, myCamera.transform.position, 
+						myCamera.transform.position + myCamera.transform.forward*2f, Color.red);
+		NS.Lines.MakeArrow (ref bodyLine, transform.position, 
+			transform.position + transform.forward*2f, Color.blue);
 		
 	}
 }

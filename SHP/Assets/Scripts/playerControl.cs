@@ -39,13 +39,13 @@ public class playerControl : MonoBehaviour {
 		}
 		rb.velocity = movement;
 
-		Lines.MakeArrow (ref line_velocity, transform.position, 
-			transform.position + rb.velocity, 3, Color.magenta);
+		NS.Lines.MakeArrow (ref line_velocity, transform.position, 
+			transform.position + rb.velocity, Color.magenta);
 	}
 
 	public void matchCameraLook() {
 		Vector3 myRotation = Vector3.Cross(myCamera.transform.right, Vector3.up);
-		Lines.Make(ref line_forward, transform.position, transform.position + myRotation, Color.green);
+		NS.Lines.Make(ref line_forward, transform.position, transform.position + myRotation, Color.green);
 		transform.rotation = Quaternion.LookRotation (myRotation.normalized, Vector3.up);
 	}
 }

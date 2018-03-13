@@ -14,8 +14,10 @@ public class DidScoreTrigger : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider col) {
-		Debug.Log (HomeGuest + " Scored!");
-		output.text = HomeGuest + " :" + (++score);
-		confetti.Emit (50);
+		if (col.gameObject.GetComponent<VRTK.Basketball> () != null) {
+			Debug.Log (HomeGuest + " Scored!");
+			output.text = HomeGuest + " :" + (++score);
+			confetti.Emit (50);
+		}
 	}
 }

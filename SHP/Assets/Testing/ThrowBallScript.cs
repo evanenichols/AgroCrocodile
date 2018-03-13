@@ -13,10 +13,10 @@ public class ThrowBallScript : MonoBehaviour {
 	{
 		Vector3 start = new Vector3 (0, 0, 0), end = new Vector3 (0, 1, 0);
 		GameObject upLine = null;
-		Lines.MakeArrow (ref upLine, start, end, 2, Color.red);
+		NS.Lines.MakeArrow (ref upLine, start, end, Color.red);
 		GameObject arcLine = null;
 		Vector3 dir = (end - start).normalized;
-		Lines.MakeArcArrow(ref arcLine, 270, 32, 2, dir, start+new Vector3 (0,0,0.5f), 
+		NS.Lines.MakeArcArrow(ref arcLine, 270, 32, dir, start+new Vector3 (0,0,0.5f), 
 			new Vector3(0,0,0), Color.red);
 	}
 
@@ -38,8 +38,8 @@ public class ThrowBallScript : MonoBehaviour {
 		Vector3 axis;
 		Debug.Log (q);
 		r.ToAngleAxis (out angle, out axis);
-		Lines.MakeArrow (ref qAxis, transform.position, transform.position + q*axis);
-		Lines.MakeArcArrow (ref qArc, angle, 32, 4, q*axis, 
+		NS.Lines.MakeArrow (ref qAxis, transform.position, transform.position + q*axis);
+		NS.Lines.MakeArcArrow (ref qArc, angle, 32, q*axis, 
 						transform.forward, transform.position);
 
 
