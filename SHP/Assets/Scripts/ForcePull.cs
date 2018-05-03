@@ -26,7 +26,7 @@ public class ForcePull : MonoBehaviour {
 	float timer;
 	// Update is called once per frame
 	void Update () {
-		Debug.Log ("force push is updating");
+//		Debug.Log ("force push is updating");
 		timer -= Time.deltaTime;
 		Rigidbody rbBeingPointedAt = null;
 		Vector3 raydir = -transform.right;
